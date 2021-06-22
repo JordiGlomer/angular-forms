@@ -1,0 +1,23 @@
+:host{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+mat-form-field{
+  display: block;
+  padding: 10px;
+}
+mat-hint{
+  color: red;
+}
+
+
+input.ng-invalid {
+  background-color: pink;
+}
+input.ng-valid {
+  background-color: lightgreen;
+}

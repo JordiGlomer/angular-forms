@@ -1,0 +1,35 @@
+<form #form01="ngForm">
+  <mat-form-field appearance="fill">
+  <mat-label>username</mat-label>
+  <input matInput type="text" name="username" #username='ngModel' ngModel minlength="4" maxlength="10" required>
+  <mat-error *ngIf="username.touched && username.errors?.required">Error en input</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+
+    <mat-label>password</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text' " name="password" #passwordModel='ngModel' [(ngModel)]='password' required>
+    <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
+      <mat-icon>{{hide ? 'visibility_off': 'visibility'}}</mat-icon>
+    </button>
+    <mat-error *ngIf="passwordModel.touched && passwordModel.errors?.required">Error password</mat-error>
+   </mat-form-field>
+   <mat-form-field appearance="fill">
+    <mat-label>confirmPassword</mat-label>
+    <input matInput type= password name="confirmPassword" #confirmPasswordModel='ngModel' [(ngModel)]='confirmPassword' required>
+    <mat-hint *ngIf="confirmPasswordModel.value !=passwordModel.value">Las passwords deben coincidir</mat-hint>
+    <!--{{confirmPasswordModel.value}}-->
+   </mat-form-field>
+<mat-form-field appearance=fill>
+   <mat-label>Select 3 language:</mat-label>
+
+   <mat-select #languages multiple [(value)]='selected' >
+    <mat-option *ngFor="let language of arrayLanguages" [value]=language>
+      {{language}}
+
+    </mat-option>
+    <mat-error *ngIf="selected?.length<3">selecciona 3 idiomas</mat-error>
+  </mat-select>
+
+</mat-form-field>
+<button mat-button type="submit"color="primary">submit</button>
+</form>
